@@ -9,7 +9,6 @@ import game.State;
 public class SmartPlayer implements Player {
     int id;
     HashMap<State, Integer> evaluations = new HashMap<>();
-    ArrayList<ArrayList<Position>> paths;
 
     public SmartPlayer(int id) {
         this.id = id;
@@ -17,11 +16,8 @@ public class SmartPlayer implements Player {
 
     @Override
     public State play(State state) throws CloneNotSupportedException {
-        this.paths = new ArrayList<ArrayList<Position>>();
-        paths.add(state.shortestPath(0));
-        paths.add(state.shortestPath(1));
         this.evaluations = new HashMap<>();
-        return this.alphaBeta(state, 3, Integer.MIN_VALUE, Integer.MAX_VALUE, false);
+        return this.alphaBeta(state, 4, Integer.MIN_VALUE, Integer.MAX_VALUE, false);
     }
 
     private boolean isTerminalState(State state) {
